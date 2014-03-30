@@ -1,0 +1,16 @@
+default: &default
+  adapter: postgresql
+  encoding: unicode
+  username: near_hit_tracker
+  pool: 5
+
+development:
+  <<: *default
+  database: near_hit_tracker_development
+
+test:
+  <<: *default
+  database: near_hit_tracker_test
+
+production:
+  url: <%= ENV["DATABASE_URL"] %>
