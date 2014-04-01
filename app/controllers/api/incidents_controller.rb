@@ -15,8 +15,8 @@ class Api::IncidentsController < Api::ApiController
   end
 
   # POST /api/incidents
-  def create
-    @incident = Incident.new(incident_params)
+  def create    
+    @incident = Incident.new(safe_params)
     if @incident.save
       render json: @incident, status: :created, location: [:api, @incident]
     else
@@ -26,8 +26,8 @@ class Api::IncidentsController < Api::ApiController
 
   # PATCH/PUT /api/incidents/:id
   def update
-    if @incident.update(incident_params)
-      render json: @incident, status: :ok, location: [:api, @incident]
+    if @incident.update(safe_params)
+      render nothing: true, status: :ok, location: [:api, @incident]
     else
       render json: @incident.errors, status: :unprocessable_entity
     end
@@ -45,7 +45,7 @@ class Api::IncidentsController < Api::ApiController
     @incident = Incident.find(params[:id])
   end
 
-  def incident_params
+  def safe_params
     params.permit(
       :comment,
       :email,
