@@ -6,7 +6,7 @@ class Incident < ActiveRecord::Base
   enum time:     [:unverified_time, :morning, :afternoon, :evening, :night]
   enum weather:  [:unverified_weather, :sunny, :cloudy, :precipitating]
 
-  validates :email, format: { with: /.+@.+\..+/, message: "%{value} is not valid" }
+  #validates :email, format: { with: /.+@.+\..+/, message: "%{value} is not valid" }
   validates :latitude, presence: true
   validates :longitude, presence: true
 end
