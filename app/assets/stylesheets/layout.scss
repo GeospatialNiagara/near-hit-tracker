@@ -83,6 +83,7 @@ main {
   
   background-color: $brand-secondary;
   color: white;
+  overflow-y: auto;
   width: 300px;
   
   .active-drawer & {

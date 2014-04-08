@@ -6,12 +6,5 @@
       
       e.preventDefault();
     });
-    
-    $('[data-category]').on('click', function(e) {
-      var $self = $(this);
-      $self.toggleClass('active');
-      
-      e.preventDefault();
-    });
   });
 })(jQuery);
