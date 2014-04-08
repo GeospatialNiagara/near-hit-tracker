@@ -5,6 +5,7 @@
   $(document).ready(function() {
     app.map       = L.map('map');
     app.layer     = new L.TileLayer('http://{s}.tile.thunderforest.com/cycle/{z}/{x}/{y}.png', { maxZoom: 18 });
+    app.cluster   = new L.MarkerClusterGroup({maxClusterRadius: 20, disableClusteringAtZoom: 16});
     app.icons     = {
       walking: L.AwesomeMarkers.icon({
         prefix:      'map-icon',
@@ -49,6 +50,7 @@
     };
     
     app.map.addLayer(app.layer);
+    app.map.addLayer(app.cluster);
     //map.setView([43.107854, -79.183083], 13)
     
     var request = $.ajax({
@@ -81,7 +83,7 @@
       var bounds = new L.LatLngBounds(app.bounds);
       app.map.fitBounds(bounds);
       
-      plotIncidents(app.incidents, app.map);
+      plotIncidents();
     });
     
     $('[data-category]').on('click', function(e) {
@@ -92,20 +94,20 @@
       var value    = $self.data('value');
       
       app.settings[category][value] = $self.hasClass('active');
-      plotIncidents(app.incidents, app.map);
+      plotIncidents();
       
       e.preventDefault();
     });
   });
   
-  function plotIncidents(incidents, map) {
-    for (var i = 0, max = incidents.length; i < max; i++) {
-      var incident = incidents[i];
+  function plotIncidents() {
+    for (var i = 0, max = app.incidents.length; i < max; i++) {
+      var incident = app.incidents[i];
       
       if (showIncident(incident)) {
-        map.addLayer(incident.marker);
+        app.cluster.addLayer(incident.marker);
       } else {
-        map.removeLayer(incident.marker);
+        app.cluster.removeLayer(incident.marker);
       }
     }
   }

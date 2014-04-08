@@ -15,5 +15,6 @@
 //= require underscore
 //= require leaflet
 //= require leaflet.awesome-markers
+//= require leaflet.markercluster
 //= require leaflet.heat
 //= require_tree .
