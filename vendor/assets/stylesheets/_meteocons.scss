@@ -9,3 +9,5 @@
     font-style: normal;
 
 }
+
+.weather-icon:before{font-family:'MeteoconsRegular';font-style:normal;font-weight:bold;content:attr(data-icon);vertical-align:middle}

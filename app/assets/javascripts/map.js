@@ -40,7 +40,7 @@
     map.addLayer(layer);
     map.setView(app.coords, app.settings.zoom);
     
-    var heatMap = L.heatLayer([], { radius: 75 }).addTo(map);
+    var heatMap = L.heatLayer([], { radius: 20 }).addTo(map);
 
     // Populate the map
     var request = $.ajax({

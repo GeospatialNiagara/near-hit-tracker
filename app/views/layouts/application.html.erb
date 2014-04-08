@@ -8,6 +8,111 @@
     <%= csrf_meta_tags %>
   </head>
   <body>
-    <%= yield %>
+    <aside id="drawer">
+      <ul>
+        <li>
+          <a href="#">Categories</a>
+          <ul>
+            <li>
+              <a href="#" class="active" data-category="category" data-value="collision">
+                <i class="map-icon-doctor"></i> Collision
+              </a>
+            </li>
+            <li>
+              <a href="#" class="active" data-category="category" data-value="near_collision">
+                <i class="fa fa-adjust"></i> Near Collision
+              </a>
+            </li>
+            <li>
+              <a href="#" class="active" data-category="category" data-value="hazard">
+                <i class="fa fa-warning"></i> Hazard
+              </a>
+            </li>
+          </ul>
+        </li>
+        <li>
+          <a href="#">Travel Mode</a>
+          <ul>
+            <li>
+              <a href="#" class="active" data-category="mode" data-value="walking">
+                <i class="map-icon-trail-walking"></i> Walking
+              </a>
+            </li>
+            <li>
+              <a href="#" class="active" data-category="mode" data-value="running">
+                <i class="map-icon-walking"></i> Running
+              </a>
+            </li>
+            <li>
+              <a href="#" class="active" data-category="mode" data-value="cycling">
+                <i class="map-icon-bicycling"></i> Cycling
+              </a>
+            </li>
+          </ul>
+        </li>
+        <li>
+          <a href="#">Time</a>
+          <ul>
+            <li>
+              <a href="#" class="active" data-category="time" data-value="morning">
+                <i class="weather-icon" data-icon="J"></i> Morning
+              </a>
+            </li>
+            <li>
+              <a href="#" class="active" data-category="time" data-value="afternoon">
+                <i class="weather-icon" data-icon="B"></i> Afternoon
+              </a>
+            </li>
+            <li>
+              <a href="#" class="active" data-category="time" data-value="evening">
+                <i class="weather-icon" data-icon="K"></i> Evening
+              </a>
+            </li>
+            <li>
+              <a href="#" class="active" data-category="time" data-value="night">
+                <i class="weather-icon" data-icon="C"></i> Night
+              </a>
+            </li>
+          </ul>
+        </li>
+        <li>
+          <a href="#">Weather</a>
+          <ul>
+            <li>
+              <a href="#" class="active" data-category="weather" data-value="sunny">
+                <i class="weather-icon" data-icon="B"></i> Sunny
+              </a>
+            </li>
+            <li>
+              <a href="#" class="active" data-category="weather" data-value="cloudy">
+                <i class="weather-icon" data-icon="N"></i> Cloudy
+              </a>
+            </li>
+            <li>
+              <a href="#" class="active" data-category="weather" data-value="precipitating">
+                <i class="weather-icon" data-icon="R"></i> Precipitating
+              </a>
+            </li>
+          </ul>
+        </li>
+      </ul>
+    </aside>
+    <div id="canvas">
+      <header id="header">
+        <a href="#" class="button" data-toggle="active-drawer">
+          <i class="fa fa-cog"></i>
+        </a>
+        
+        <h1>Hit Tracker</h1>
+        
+        <a href="#" class="button">
+          <i class="fa fa-plus"></i>
+        </a>
+      </header>
+      
+      <main>
+        <%= yield %>
+      </main>
+    </div>
   </body>
 </html>

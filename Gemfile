@@ -8,6 +8,10 @@ gem 'jquery-rails'
 gem 'jbuilder', '~> 2.0'
 gem 'geocoder', '~> 1.1.9'
 
+gem 'bourbon', '~> 3.1.8'
+gem 'neat', '~> 1.5.1'
+gem 'bitters', '~> 0.9.2'
+
 gem 'sdoc', '~> 0.4.0',    group: :doc
 gem 'spring',              group: :development
 
