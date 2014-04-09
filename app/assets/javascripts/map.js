@@ -6,6 +6,8 @@
     $(document).ready(function() {
       app.map       = L.map('map');
       app.layer     = new L.TileLayer('http://{s}.tile.thunderforest.com/cycle/{z}/{x}/{y}.png', { maxZoom: 18 });
+      app.heatLayer = L.heatLayer([], {radius: 25});
+      app.heatData  = [];
       app.cluster   = new L.MarkerClusterGroup({maxClusterRadius: 20, disableClusteringAtZoom: 16});
       app.icons     = {
         walking: L.AwesomeMarkers.icon({
@@ -52,6 +54,7 @@
     
       app.map.addLayer(app.layer);
       app.map.addLayer(app.cluster);
+      app.map.addLayer(app.heatLayer);
       //map.setView([43.107854, -79.183083], 13)
     
       var request = $.ajax({
@@ -102,15 +105,20 @@
     });
   
     function plotIncidents() {
+      app.heatData = [];
+      
       for (var i = 0, max = app.incidents.length; i < max; i++) {
         var incident = app.incidents[i];
       
         if (showIncident(incident)) {
           app.cluster.addLayer(incident.marker);
+          app.heatData.push([incident.latitude, incident.longitude]);
         } else {
           app.cluster.removeLayer(incident.marker);
         }
       }
+      
+      app.heatLayer.setLatLngs(app.heatData);
     }
   
     function showIncident(incident) {
