@@ -1,6 +1,6 @@
 (function($) {  
   var app = window.app = {};
-  L.Icon.Default.imagePath = '/assets';
+  L.Icon.Default.imagePath = '/images';
   
   $(document).ready(function() {
     app.map       = L.map('map');
