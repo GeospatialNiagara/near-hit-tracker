@@ -7,3 +7,46 @@
     <i class="fa fa-chevron-left"></i>
   </a>
 <% end %>
+
+<div class="container">
+  <%= form_for @incident do |f| %>
+    <% if @incident.errors.present? %>
+      <div class="errors">
+        <p>Please correct the following errors:</p>
+        <ul>
+          <% @incident.errors.full_messages.each do |msg| %>
+            <li><%= msg %></li>
+          <% end %>
+        </ul>
+      </div>
+    <% end %>
+  
+    <%= f.hidden_field :latitude %>
+    <%= f.hidden_field :longitude %>
+    <%= f.hidden_field :category %>
+    <%= f.hidden_field :mode %>
+    <%= f.hidden_field :time %>
+    <%= f.hidden_field :weather %>
+    
+    <div class="field">
+      <label>Location</label>
+      <div id="draggable">
+      
+      </div>
+    </div>
+  
+    <div class="field">
+      <%= f.label :email %>
+      <%= f.email_field :email %>
+    </div>
+  
+    <div class="field">
+      <%= f.label :comment %>
+      <%= f.text_area :comment %>
+    </div>
+    
+    <div class="actions">
+      <%= f.submit 'Save', class: 'button' %>
+    </div>
+  <% end %>
+</div>
