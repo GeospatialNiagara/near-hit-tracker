@@ -6,24 +6,24 @@
     $(document).ready(function() {
       app.map       = L.map('map');
       app.layer     = new L.TileLayer('http://{s}.tile.thunderforest.com/cycle/{z}/{x}/{y}.png', { maxZoom: 18 });
-      app.heatLayer = L.heatLayer([], {radius: 25});
+      app.heatLayer = L.heatLayer([], {radius: 25, gradient: {0.4: 'aqua', 0.65: 'yellow', 1: 'pink'}});
       app.heatData  = [];
       app.cluster   = new L.MarkerClusterGroup({maxClusterRadius: 20, disableClusteringAtZoom: 16});
       app.icons     = {
         walking: L.AwesomeMarkers.icon({
           prefix:      'map-icon',
           icon:        'trail-walking',
-          markerColor: 'blue'
+          markerColor: 'cadetblue'
         }),
         running: L.AwesomeMarkers.icon({
           prefix:      'map-icon',
           icon:        'walking',
-          markerColor: 'red'
+          markerColor: 'blue'
         }),
         cycling: L.AwesomeMarkers.icon({
           prefix:      'map-icon',
           icon:        'bicycling',
-          markerColor: 'green'
+          markerColor: 'purple'
         })
       };
       app.incidents   = [];
