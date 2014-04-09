@@ -23,10 +23,26 @@
   
     <%= f.hidden_field :latitude %>
     <%= f.hidden_field :longitude %>
-    <%= f.hidden_field :category %>
-    <%= f.hidden_field :mode %>
-    <%= f.hidden_field :time %>
-    <%= f.hidden_field :weather %>
+    
+    <div class="field">
+      <%= f.label :category, 'Incident Type' %>
+      <%= f.select :category, options_for_select({'Collision' => 'collision', 'Near Collision' => 'near_collision', 'Hazard' => 'hazard' }, f.object.category) %>
+    </div>
+    
+    <div class="field">
+      <%= f.label :mode, 'Transporation Mode' %>
+      <%= f.select :mode, options_for_select({'Walking' => 'walking', 'Running' => 'running', 'Cycling' => 'cycling'}, f.object.mode) %>
+    </div>
+    
+    <div class="field">
+      <%= f.label :time, 'Time of Day' %>
+      <%= f.select :time, options_for_select({'Morning' => 'morning', 'Afternoon' => 'afternoon', 'Evening' => 'evening', 'Night' => 'night'}, f.object.time) %>
+    </div>
+    
+    <div class="field">
+      <%= f.label :weather, 'Weather Conditions' %>
+      <%= f.select :weather, options_for_select({'Sunny' => 'sunny', 'Cloudy' => 'cloudy', 'Precipitating' => 'precipitating'}, f.object.weather) %>
+    </div>
     
     <div class="field">
       <label>Location</label>
