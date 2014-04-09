@@ -6,24 +6,24 @@
     $(document).ready(function() {
       app.map       = L.map('map');
       app.layer     = new L.TileLayer('http://{s}.tile.thunderforest.com/cycle/{z}/{x}/{y}.png', { maxZoom: 18 });
-      app.heatLayer = L.heatLayer([], {radius: 25, gradient: {0.4: 'aqua', 0.65: 'yellow', 1: 'pink'}});
+      app.heatLayer = L.heatLayer([], {radius: 50});
       app.heatData  = [];
       app.cluster   = new L.MarkerClusterGroup({maxClusterRadius: 20, disableClusteringAtZoom: 16});
       app.icons     = {
         walking: L.AwesomeMarkers.icon({
           prefix:      'map-icon',
           icon:        'trail-walking',
-          markerColor: 'cadetblue'
+          markerColor: 'green'
         }),
         running: L.AwesomeMarkers.icon({
           prefix:      'map-icon',
           icon:        'walking',
-          markerColor: 'blue'
+          markerColor: 'orange'
         }),
         cycling: L.AwesomeMarkers.icon({
           prefix:      'map-icon',
           icon:        'bicycling',
-          markerColor: 'purple'
+          markerColor: 'red'
         })
       };
       app.incidents   = [];
@@ -54,7 +54,7 @@
     
       app.map.addLayer(app.layer);
       app.map.addLayer(app.cluster);
-      app.map.addLayer(app.heatLayer);
+      //app.map.addLayer(app.heatLayer);
       //map.setView([43.107854, -79.183083], 13)
     
       var request = $.ajax({
@@ -100,6 +100,27 @@
         app.settings[category][value] = $self.hasClass('active');
         plotIncidents();
       
+        e.preventDefault();
+      });
+      
+      $('[data-layer]').on('click', function(e) {
+        var $self = $(this);
+        $self.toggleClass('active');
+        
+        var layer = $self.data('layer');
+        
+        if (layer == 'heatmap' && $self.hasClass('active')) {
+          app.map.addLayer(app.heatLayer);
+        } else if (layer == 'heatmap') {
+          app.map.removeLayer(app.heatLayer);
+        }
+        
+        if (layer == 'markers' && $self.hasClass('active')) {
+          app.map.addLayer(app.cluster);
+        } else if (layer == 'markers') {
+          app.map.removeLayer(app.cluster);
+        }
+        
         e.preventDefault();
       });
     });
