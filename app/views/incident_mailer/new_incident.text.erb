@@ -1,0 +1,15 @@
+Hi <%= @contact[:name] %>,
+
+A user reported a new incident on the Carlin Report. See details below.
+
+Category:    <%= @incident.category %>
+Mode:        <%= @incident.mode %>
+Time:        <%= @incident.time %>
+Weather:     <%= @incident.weather %>
+Coordinates: <%= @incident.latitude %>, <%= @incident.longitude %>
+<% if @incident.email.present? %>
+Email:       <%= @incident.email %>
+<% end %>
+<% if @incident.comment.present? %>
+Comment:     <%= @incident.comment %>
+<% end %>

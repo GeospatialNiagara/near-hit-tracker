@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta content="text/html; charset=UTF-8" http-equiv="Content-Type" />
+  </head>
+  <body>
+    <h3>Hi <%= @contact[:name] %>,</h3>
+    
+    <p>
+      A user reported a new incident on the Carlin Report. See details below.
+    </p>
+    
+    <table>
+      <tr>
+        <th>Category</th>
+        <td><%= @incident.category %></td>
+      </tr>
+      <tr>
+        <th>Mode</th>
+        <td><%= @incident.mode %></td>
+      </tr>
+      <tr>
+        <th>Time</th>
+        <td><%= @incident.time %></td>
+      </tr>
+      <tr>
+        <th>Weather</th>
+        <td><%= @incident.weather %></td>
+      </tr>
+      <tr>
+        <th>Coordinates</th>
+        <td><%= @incident.latitude %>, <%= @incident.longitude %></td>
+      </tr>
+      <% if @incident.email.present? %>
+      <tr>
+        <th>Email</th>
+        <td><%= @incident.email %></td>
+      </tr>
+      <% end %>
+      <% if @incident.comment.present? %>
+      <tr>
+        <th>Comment</th>
+        <td><%= @incident.comment %></td>
+      </tr>
+      <% end %>
+    </table>
+  </body>
+</html>
