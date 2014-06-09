@@ -19,7 +19,7 @@ class Incident < ActiveRecord::Base
       {name: 'Nick', email: 'nkenyeres@gmail.com'},
       {name: 'Darren', email: 'darren.platakis@gmail.com'}
     ].each do |contact|
-      IncidentMailer.new_incident(self, contact)
+      IncidentMailer.new_incident(self, contact).deliver
     end
   end
 end
